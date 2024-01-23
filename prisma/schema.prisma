@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id        Int      @id @default(autoincrement()) @map("_id")
+  email     String   @unique
+  name      String?
+  password  String
+  role      Role
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  address   Adress?
+
+  @@map("users")
+}
+
+model Adress {
+  id           Int     @id @default(autoincrement()) @map("_id")
+  street       String
+  number       String?
+  city         String
+  neighborhood String
+  state        String
+  complement   String
+  country      String
+  userId       Int     @unique
+  User         User    @relation(fields: [userId], references: [id])
+
+  @@map("adresses")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
