@@ -18,11 +18,26 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@core/*": [
+        "core/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@infra/*": [
+        "infra/*"
+      ],
       "@modules/*": [
         "modules/*"
       ],
       "@database/*": [
         "database/*"
+      ],
+      "@helpers/*": [
+        "helpers/*"
       ],
     }
   }
