@@ -1,15 +1,8 @@
-import {
-  ClassSerializerInterceptor,
-  Controller,
-  Get,
-  Query,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { MapsRepository } from '../repositories/maps.repository';
 import { AutocompleteDto } from '../dtos/autocomplete.dto';
 
 @Controller('maps')
-@UseInterceptors(ClassSerializerInterceptor)
 export class MapsController {
   constructor(private readonly mapsRepository: MapsRepository) {}
 

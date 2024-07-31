@@ -33,7 +33,6 @@ export class UseCaseRegisterUser implements UseCase {
       return createdUser;
     } catch (error) {
       console.log(error);
-      console.log(registerDto);
       if (error instanceof HttpException) throw error;
       throw new InternalServerError(error?.message);
     }

@@ -11,9 +11,6 @@ export class PrismaUsersRepository implements UsersRepository {
   async findByEmail(email: string) {
     const user = await this.prismaService.user.findUnique({
       where: { email },
-      include: {
-        address: true,
-      },
     });
 
     if (!user) return null;
@@ -24,9 +21,6 @@ export class PrismaUsersRepository implements UsersRepository {
   async findById(id: number) {
     const user = await this.prismaService.user.findUnique({
       where: { id },
-      include: {
-        address: true,
-      },
     });
 
     if (!user) return null;

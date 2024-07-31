@@ -3,20 +3,11 @@ import { RegisterUserDto } from '@/domain/accounts/dtos/register-user.dto';
 import { UseCaseLoginUser } from '@/domain/accounts/usecases/login-user';
 import { UseCaseRegisterUser } from '@/domain/accounts/usecases/register-user';
 import { Public } from '@/infra/auth/public';
-import {
-  Controller,
-  Post,
-  Body,
-  UseInterceptors,
-  ClassSerializerInterceptor,
-  HttpCode,
-  HttpStatus,
-} from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, HttpStatus } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('auth')
 @Controller('auth')
-@UseInterceptors(ClassSerializerInterceptor)
 export class AccountsController {
   constructor(
     private readonly usecaseRegisterUser: UseCaseRegisterUser,
@@ -35,7 +26,7 @@ export class AccountsController {
   @Post('/login')
   @Public()
   async login(@Body() loginUserDto: LoginUserDto) {
-    const user = await this.useCaseLoginUser.execute(loginUserDto);
-    return { user };
+    const auth = await this.useCaseLoginUser.execute(loginUserDto);
+    return auth;
   }
 }

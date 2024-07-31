@@ -47,14 +47,8 @@ export class User {
   constructor(inputs: Partial<User>) {
     Object.assign(this, {
       ...inputs,
-      ...this.parseDates(inputs),
-    });
-  }
-
-  private parseDates(inputs: Partial<User>) {
-    return {
       createdAt: new Date(inputs.createdAt!),
       updatedAt: new Date(inputs.updatedAt!),
-    };
+    });
   }
 }

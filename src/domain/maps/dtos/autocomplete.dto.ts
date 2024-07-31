@@ -9,7 +9,7 @@ import {
 
 import { PlaceAutocompleteType } from '@googlemaps/google-maps-services-js';
 import { Transform } from 'class-transformer';
-import { toArray, toBoolean, toNumber } from '@helpers/transformers';
+import { toArray, toBoolean, toNumber } from '@/core/infra/transformers';
 
 export class AutocompleteDto {
   @IsNotEmpty()
